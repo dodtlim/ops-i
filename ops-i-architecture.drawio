@@ -1,9 +1,81 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="1TPipeEXBkHsY47AQX3W">
-    <mxGraphModel>
+    <mxGraphModel dx="1405" dy="888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="heXIOsVvue35nN5C5-do-5" value="OPS-I&lt;div&gt;(Operations Intelligence Service)&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="70" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-6" target="heXIOsVvue35nN5C5-do-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-6" value="OPS-I Frontend&lt;div&gt;(React/Dash)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="275" y="230" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-7" value="OPS-I API Service&lt;div&gt;(Flask/FastAPI)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+          <mxGeometry x="120" y="356" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-11" value="AWS CloudWatch/Datadog" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="446" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-13" value="AWS SageMaker" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="446" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-14" value="AWS Autoscaling/Bedrock" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="446" width="150" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-15" value="MongoDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="335" y="666" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-22" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="656" as="sourcePoint" />
+            <mxPoint x="230" y="606" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="706" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-24" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0;entryDx=85;entryDy=160;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-15" target="heXIOsVvue35nN5C5-do-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="706" as="sourcePoint" />
+            <mxPoint x="610" y="656" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="595" y="706" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-25" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.498;entryY=0.996;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-15" target="heXIOsVvue35nN5C5-do-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="656" as="sourcePoint" />
+            <mxPoint x="410" y="606" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-26" value="" style="endArrow=none;html=1;rounded=0;exitX=0.465;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="456" as="sourcePoint" />
+            <mxPoint x="210" y="406" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-27" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0;exitDx=65;exitDy=0;exitPerimeter=0;entryX=0.519;entryY=-0.012;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-13" target="heXIOsVvue35nN5C5-do-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="456" as="sourcePoint" />
+            <mxPoint x="400" y="406" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-28" value="" style="endArrow=none;html=1;rounded=0;exitX=0.452;exitY=-0.001;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.184;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-14" target="heXIOsVvue35nN5C5-do-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="456" as="sourcePoint" />
+            <mxPoint x="590" y="406" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="heXIOsVvue35nN5C5-do-29" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="heXIOsVvue35nN5C5-do-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="340" as="sourcePoint" />
+            <mxPoint x="400" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
