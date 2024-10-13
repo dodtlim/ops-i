@@ -1,0 +1,297 @@
+openapi: 3.1.0
+info:
+  version: 0.0.3
+  title: OPS-I API
+  description: API for Operations Intelligence (OPS-I) System, covering authentication, metrics, AI predictions, scaling logs, and frontend interactions.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Authentication
+    description: Endpoints related to user authentication
+  - name: Metrics
+    description: Endpoints related to system metrics
+  - name: AI Predictions
+    description: Endpoints related to AI predictions
+  - name: Scaling Logs
+    description: Endpoints related to scaling logs
+  - name: Frontend
+    description: Endpoints for frontend user actions and dashboard
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User registered
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Authenticate a user and return a token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: User logged in, JWT token issued
+
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Log out a user and invalidate token
+      responses:
+        '204':
+          description: User logged out
+
+  /api/metrics:
+    get:
+      tags:
+        - Metrics
+      summary: Get latest system metrics
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: A list of system metrics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      type: string
+                      format: date-time
+                    cpu_usage:
+                      type: integer
+                    memory_usage:
+                      type: integer
+                    instance_id:
+                      type: string
+    post:
+      tags:
+        - Metrics
+      summary: Add new system metric
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cpu_usage:
+                  type: integer
+                memory_usage:
+                  type: integer
+                instance_id:
+                  type: string
+      responses:
+        '201':
+          description: Metric added
+
+  /api/metrics/{id}:
+    get:
+      tags:
+        - Metrics
+      summary: Get a specific metric
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the metric
+      responses:
+        '200':
+          description: A specific system metric
+    put:
+      tags:
+        - Metrics
+      summary: Update a specific metric
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cpu_usage:
+                  type: integer
+                memory_usage:
+                  type: integer
+      responses:
+        '200':
+          description: Metric updated
+    delete:
+      tags:
+        - Metrics
+      summary: Delete a specific metric
+      security:
+        - BearerAuth: []
+      responses:
+        '204':
+          description: Metric deleted
+
+  /api/predictions:
+    get:
+      tags:
+        - AI Predictions
+      summary: Get AI predictions
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: A list of AI predictions
+    post:
+      tags:
+        - AI Predictions
+      summary: Add a new AI prediction
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                predicted_issue:
+                  type: string
+                confidence:
+                  type: number
+                predicted_actions:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: AI Prediction added
+
+  /api/scaling_logs:
+    get:
+      tags:
+        - Scaling Logs
+      summary: Get scaling logs
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: A list of scaling logs
+    post:
+      tags:
+        - Scaling Logs
+      summary: Add a new scaling log
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action_taken:
+                  type: string
+                reason:
+                  type: string
+                instance_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: Scaling log added
+
+  /api/dashboard/summary:
+    get:
+      tags:
+        - Frontend
+      summary: Get summary for the dashboard
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Summary for the frontend dashboard
+
+  /api/dashboard/metrics/trend:
+    get:
+      tags:
+        - Frontend
+      summary: Get metrics trend for the last 24 hours
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Trend data for system metrics
+
+  /api/dashboard/ai_predictions/recent:
+    get:
+      tags:
+        - Frontend
+      summary: Get recent AI predictions
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: A list of recent AI predictions
+
+  /api/dashboard/scaling_logs/recent:
+    get:
+      tags:
+        - Frontend
+      summary: Get recent scaling logs
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: A list of recent scaling logs
+
+  /api/dashboard/alerts/recent:
+    get:
+      tags:
+        - Frontend
+      summary: Get recent alerts
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: A list of recent alerts
