@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: OPS-I API
+  description: API for Operations Intelligence (OPS-I) System
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /api/metrics:
+    get:
+      summary: Get latest system metrics
+      description: Retrieve the latest system metrics (CPU, memory usage) from MongoDB.
+      responses:
+        '200':
+          description: A list of system metrics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metrics:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                        cpu_usage:
+                          type: integer
+                        memory_usage:
+                          type: integer
+                        instance_id:
+                          type: string
+    post:
+      summary: Add new system metrics
+      description: Add a new system metric (CPU, memory usage) to MongoDB.
+      requestBody:
+        description: System metric to add
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cpu_usage:
+                  type: integer
+                memory_usage:
+                  type: integer
+                instance_id:
+                  type: string
+      responses:
+        '201':
+          description: Metric added successfully
+
+  /api/predictions:
+    get:
+      summary: Get AI predictions
+      description: Retrieve AI predictions from MongoDB.
+      responses:
+        '200':
+          description: A list of AI predictions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  predictions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                        predicted_issue:
+                          type: string
+                        confidence:
+                          type: number
+                        predicted_actions:
+                          type: array
+                          items:
+                            type: string
+    post:
+      summary: Add AI predictions
+      description: Add a new AI prediction to MongoDB.
+      requestBody:
+        description: AI prediction to add
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                predicted_issue:
+                  type: string
+                confidence:
+                  type: number
+                predicted_actions:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: AI Prediction added successfully
+
+  /api/scaling_logs:
+    get:
+      summary: Get scaling logs
+      description: Retrieve scaling logs from MongoDB.
+      responses:
+        '200':
+          description: A list of scaling logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scaling_logs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                        action_taken:
+                          type: string
+                        reason:
+                          type: string
+                        instance_ids:
+                          type: array
+                          items:
+                            type: string
+    post:
+      summary: Add scaling log
+      description: Add a new scaling log to MongoDB.
+      requestBody:
+        description: Scaling log to add
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action_taken:
+                  type: string
+                reason:
+                  type: string
+                instance_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: Scaling log added successfully
