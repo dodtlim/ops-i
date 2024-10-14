@@ -1,0 +1,7 @@
+import os
+
+class Config:
+    ENV = os.getenv("ENV", "development")
+    DEBUG = ENV == "development"
+
+config = Config()
