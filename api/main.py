@@ -41,7 +41,7 @@ async def login(user: User):
 @app.post("/auth/logout", tags=["Authentication"], status_code=204)
 async def logout(token: str = Depends(oauth2_scheme)):
     # Implement user logout logic
-    return {"message": "User logged out"}
+    return None  # Return an empty response body
 
 # Metrics Endpoints
 @app.get("/api/metrics", tags=["Metrics"], status_code=200)
@@ -67,7 +67,7 @@ async def update_metric(id: str, metric: Metric, token: str = Depends(oauth2_sch
 @app.delete("/api/metrics/{id}", tags=["Metrics"], status_code=204)
 async def delete_metric(id: str, token: str = Depends(oauth2_scheme)):
     # Implement logic to delete a specific metric
-    return {"message": "Metric deleted"}
+    return None  # Return an empty response body
 
 # AI Predictions Endpoints
 @app.get("/api/predictions", tags=["AI Predictions"], status_code=200)
